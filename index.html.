@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Para Minha Raquel</title>
+    <style>
+        body {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'serif';
+        }
+        .container {
+            text-align: center;
+            color: white;
+            z-index: 10;
+        }
+        #nome {
+            font-size: 5rem;
+            color: #ff1493; /* Rosa Choque */
+            text-shadow: 0 0 20px #ff1493;
+            animation: brilho 1.5s infinite alternate;
+            margin: 0;
+        }
+        .frase {
+            font-style: italic;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+        @keyframes brilho {
+            from { text-shadow: 0 0 10px #ff1493; }
+            to { text-shadow: 0 0 30px #ff1493, 0 0 50px #ff69b4; }
+        }
+        .coracao {
+            position: absolute;
+            bottom: -50px;
+            color: #ff1493;
+            font-size: 25px;
+            user-select: none;
+            animation: subir linear infinite;
+        }
+        @keyframes subir {
+            to {
+                transform: translateY(-110vh) translateX(30px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
 
+    <div class="container">
+        <h1 id="nome">Raquel</h1>
+        <p class="frase">"Um nó de três cordas não se quebra facilmente."</p>
+        <p style="font-size: 0.9rem; margin-top: 50px;">Geovany & Raquel</p>
+    </div>
+
+    <script>
+        function criarCoracao() {
+            const c = document.createElement("div");
+            c.classList.add("coracao");
+            c.innerHTML = "❤";
+            c.style.left = Math.random() * 100 + "vw";
+            c.style.animationDuration = (Math.random() * 3 + 2) + "s";
+            c.style.opacity = Math.random();
+            document.body.appendChild(c);
+            
+            setTimeout(() => { c.remove(); }, 5000);
+        }
+        setInterval(criarCoracao, 200);
+    </script>
+</body>
+</html>
