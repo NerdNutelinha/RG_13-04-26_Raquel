@@ -1,0 +1,7 @@
+<div class="painel-gmail">
+  <button class="btn-rosa" onclick="copyToClipboard('seuemail@gmail.com')">
+    🎿 Copiar Gmail 🎿
+    <span class="coracoes-btn">♥♥</span>
+  </button>
+  <p class="legenda">Gomes Santos<br>01/03/2029</p>
+</div>
