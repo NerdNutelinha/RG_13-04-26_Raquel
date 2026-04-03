@@ -123,7 +123,7 @@
     <div id="login-screen">
         <div class="login-box">
             <h2>❤️Raquel❤️</h2>
-            <input type="password" id="senha" placeholder="18/02/2025">
+            <input type="text" id="senha" placeholder="18/02/2025">
             <button class="btn-login" onclick="checkLogin()">Entrar no nosso mundo</button>
             <p id="erro-msg">💘 A senha é o dia em que comecei a te amar: 18/02/2025 💘</p>
         </div>
@@ -144,7 +144,7 @@
         <p class="versiculo versiculo-chave" onclick="showVideo()">"Um cordão de três dobras não se rompe facilmente." - Eclesiastes 4:12</p>
 
         <div id="video-container">
-            <iframe width="320" height="560" src="https://youtube.com/shorts/8GlWCm9wOF0?feature=share"></iframe>
+            <iframe width="320" height="560" src="https://www.youtube.com/embed/8GlWCm9wOF0" frameborder="0" allowfullscreen></iframe>
             <p>↓ Continue descendo Vida, tem mais ↓</p>
         </div>
 
@@ -156,7 +156,7 @@
     </div>
 
     <script>
-        // Corações
+        // Corações flutuantes
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart');
@@ -167,10 +167,11 @@
         }
         setInterval(createHeart, 300);
 
-        // Lógica de Login
+        // Lógica de Login CORRIGIDA para a data
         function checkLogin() {
             const senha = document.getElementById('senha').value;
-            if(senha === "Nunca irei te deixar") {
+            // Mudei para aceitar a data que está na dica
+            if(senha === "18/02/2025") {
                 document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('transition-screen').style.display = 'flex';
             } else {
@@ -178,29 +179,24 @@
             }
         }
 
-        // Mostrar Versículos
         function showVersiculos() {
             document.getElementById('transition-screen').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
         }
 
-        // Mostrar Vídeo
         function showVideo() {
             document.getElementById('video-container').style.display = 'block';
             window.scrollBy({ top: 400, behavior: 'smooth' });
         }
 
-        // Copiar Gmail e mudar cores
         function copiarGmail() {
             navigator.clipboard.writeText("georaquel.2026@gmail.com | Senha: 13022026Rg");
             alert("Copiado com sucesso, meu amor!");
-            document.documentElement.style.setProperty('--heart-color', '#ff8c00'); // Muda para Laranja
+            document.documentElement.style.setProperty('--heart-color', '#ff8c00'); 
             setTimeout(() => {
-                document.documentElement.style.setProperty('--heart-color', '#ffd700'); // Muda para Amarelo
+                document.documentElement.style.setProperty('--heart-color', '#ffd700'); 
             }, 2000);
         }
     </script>
-</body>
-</html>
 </body>
 </html>
