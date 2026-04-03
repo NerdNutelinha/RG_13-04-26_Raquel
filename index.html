@@ -3,208 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Minha Raquel ❤️</title>
+    <title>Para Minha Esposa ❤️</title>
     <style>
         :root {
-            --heart-color: #ff0000; /* Vermelho inicial */
-            --bg-color: #fffafa;
+            --pink-primary: #ffb6c1;
+            --pink-dark: #ff69b4;
+            --heart-color: #ff0000;
         }
 
         body {
             margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Arial', sans-serif;
+            background: #fff5f7;
             overflow-x: hidden;
             text-align: center;
-            transition: background 0.5s;
         }
 
-        /* Animação dos Corações */
+        /* --- ANIMAÇÃO DE CORAÇÕES --- */
         .heart {
             position: fixed;
             bottom: -10%;
             color: var(--heart-color);
             font-size: 20px;
-            user-select: none;
-            z-index: -1;
-            animation: moveUp 6s linear infinite;
+            z-index: 100;
+            animation: moveUp 5s linear infinite;
         }
-
         @keyframes moveUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-110vh); opacity: 0; }
         }
 
-        /* Seção de Entrada */
-        .section {
-            min-height: 100vh;
+        /* --- TELA DE LOGIN --- */
+        #login-screen {
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            transition: opacity 0.8s;
         }
 
-        .versiculo {
-            font-style: italic;
-            color: #555;
-            margin: 20px;
-            max-width: 600px;
-            cursor: default;
-        }
-
-        .versiculo-chave {
-            font-weight: bold;
-            color: #b22222;
-            cursor: pointer;
-            text-decoration: underline;
-            transition: transform 0.3s;
-        }
-
-        .versiculo-chave:hover {
-            transform: scale(1.1);
-        }
-
-        /* Vídeo (escondido inicialmente) */
-        #video-container {
-            display: none;
-            margin-top: 30px;
-        }
-
-        /* Seta para baixo */
-        .seta {
-            font-size: 40px;
-            color: #ff69b4;
-            animation: bounce 2s infinite;
-            display: none;
-            margin-top: 50px;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
-        }
-
-        /* Seção do Gmail */
-        #gmail-section {
-            display: none;
+        .login-box {
             background: white;
-            border-top: 2px solid #ffc0cb;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(255, 182, 193, 0.5);
         }
 
-        .texto-romantico {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: #444;
-            max-width: 700px;
-            margin: 40px auto;
+        input {
+            display: block;
+            margin: 15px auto;
+            padding: 12px;
+            border: 2px solid var(--pink-primary);
+            border-radius: 10px;
+            width: 250px;
+            outline: none;
         }
 
-        /* Botão Personalizado */
-        .btn-gmail {
-            background-color: #ffb6c1; /* Rosa */
-            border: none;
-            border-radius: 50px;
-            padding: 20px 40px;
-            font-size: 1.2rem;
+        button.btn-login {
+            background: var(--pink-primary);
             color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 20px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-weight: bold;
             transition: 0.3s;
-            position: relative;
         }
 
-        .btn-gmail:hover {
-            background-color: #ff69b4;
-            transform: translateY(-3px);
-        }
-
-        .data-assinatura {
-            margin-top: 20px;
-            color: #888;
+        #erro-msg {
+            color: #d63384;
             font-size: 0.9rem;
-            letter-spacing: 2px;
+            margin-top: 10px;
+            display: none;
         }
+
+        /* --- BOTÃO DE TRANSIÇÃO (O CHARME) --- */
+        #transition-screen {
+            display: none;
+            height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn-surpresa {
+            background: var(--pink-dark);
+            color: white;
+            padding: 25px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            border: none;
+        }
+
+        .assinatura-futuro {
+            margin-top: 30px;
+            font-style: italic;
+            color: #888;
+        }
+
+        /* --- SEÇÃO DOS VERSÍCULOS E VÍDEO --- */
+        #main-content {
+            display: none;
+            padding: 50px 20px;
+        }
+
+        .versiculo { font-style: italic; color: #555; margin: 30px 0; }
+        .versiculo-chave { font-weight: bold; color: #b22222; cursor: pointer; text-decoration: underline; }
+
+        #video-container { display: none; margin: 40px 0; }
+        .gmail-box { border-top: 2px solid #ffd1dc; padding: 40px; margin-top: 50px; }
     </style>
 </head>
 <body>
 
-    <div class="section" id="entrada">
-        <p class="versiculo">"O amor é paciente, o amor é bondoso." - 1 Coríntios 13:4</p>
-        <p class="versiculo">"Acima de tudo, porém, revistam-se do amor." - Colossenses 3:14</p>
-        
-        <p class="versiculo versiculo-chave" id="eclesiastes">
-            "Um cordão de três dobras não se rompe facilmente." - Eclesiastes 4:12
-        </p>
-
-        <p class="versiculo">"Onde quer que tu fores, irei eu." - Rute 1:16</p>
-
-        <div id="video-container">
-            <iframe width="320" height="560" 
-                src="https://photos.app.goo.gl/MQSgEj88gMsr6e978" 
-                frameborder="0" allowfullscreen>
-            </iframe>
+    <div id="login-screen">
+        <div class="login-box">
+            <h2>❤️Raquel❤️</h2>
+            <input type="password" id="senha" placeholder="Qual a nossa promessa?">
+            <button class="btn-login" onclick="checkLogin()">Entrar no nosso mundo</button>
+            <p id="erro-msg">Amor, você esqueceu a senha? 🥺 Tenta de novo!</p>
         </div>
-
-        <div class="seta" id="seta">↓</div>
     </div>
 
-    <div class="section" id="gmail-section">
-        <p class="texto-romantico">
-            Para que você possa sempre se lembrar dos nossos momentos juntos, faça login com esse gmail e então me conte o que achou sobre tudo meu amorzinho mais lindo e perfeito desse mundo que amo muitooooooo e não largo por nada...
-        </p>
-
-        <button class="btn-gmail" onclick="copiarGmail()">
-            🎿 Copiar Gmail e Senha 🎿
+    <div id="transition-screen">
+        <button class="btn-surpresa" onclick="showVersiculos()">
+            Clique aqui para ver uma surpresa que preparei...
         </button>
+        <div class="assinatura-futuro">
+            <strong>Gomes Santos</strong><br>
+            01/03/2029 🍼
+        </div>
+    </div>
 
-        <div class="data-assinatura">
-            Gomes Santos<br>01/03/2029
+    <div id="main-content">
+        <p class="versiculo">"O amor é paciente..." - 1 Coríntios 13:4</p>
+        <p class="versiculo versiculo-chave" onclick="showVideo()">"Um cordão de três dobras não se rompe facilmente." - Eclesiastes 4:12</p>
+
+        <div id="video-container">
+            <iframe width="320" height="560" src="https://1drv.ms/f/c/2e7c1cd7b0039dc8/IgBjkIj7G61KSYunudfMEUZGAfoY-XoLoRAg5MuavPkhLmA?e=7OeeSE" frameborder="0"></iframe>
+            <p>↓ Continue descendo, tem mais ↓</p>
+        </div>
+
+        <div class="gmail-box">
+            <p>Para que você possa sempre se lembrar dos nossos momentos... (seu texto completo)</p>
+            <button class="btn-login" onclick="copiarGmail()">🎿 Copiar Gmail e Senha 🎿</button>
+            <p style="margin-top:20px; color:#888;">Gomes Santos | 01/03/2029</p>
         </div>
     </div>
 
     <script>
-        // Criar corações flutuantes
+        // Corações
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart');
             heart.innerHTML = '❤️';
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
             document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 6000);
+            setTimeout(() => heart.remove(), 5000);
         }
         setInterval(createHeart, 300);
 
-        // Ação ao clicar em Eclesiastes
-        document.getElementById('eclesiastes').addEventListener('click', function() {
+        // Lógica de Login
+        function checkLogin() {
+            const senha = document.getElementById('senha').value;
+            if(senha === "Nunca irei te deixar") {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('transition-screen').style.display = 'flex';
+            } else {
+                document.getElementById('erro-msg').style.display = 'block';
+            }
+        }
+
+        // Mostrar Versículos
+        function showVersiculos() {
+            document.getElementById('transition-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+        }
+
+        // Mostrar Vídeo
+        function showVideo() {
             document.getElementById('video-container').style.display = 'block';
-            document.getElementById('seta').style.display = 'block';
-            document.getElementById('gmail-section').style.display = 'flex';
-            
-            // Rolar suavemente para o vídeo
-            window.scrollTo({
-                top: document.getElementById('video-container').offsetTop,
-                behavior: 'smooth'
-            });
-        });
+            window.scrollBy({ top: 400, behavior: 'smooth' });
+        }
 
-        // Função Copiar e Trocar Cores
+        // Copiar Gmail e mudar cores
         function copiarGmail() {
-            const info = "georaquel.2026@gmail.com | Senha: 13022026Rg.";
-            navigator.clipboard.writeText(info);
-            alert("Gmail e Senha copiados! ❤️");
-
-            // Mudar cor dos corações (Lógica: Vermelho -> Laranja -> Amarelo)
-            const root = document.documentElement;
-            root.style.setProperty('--heart-color', '#ff8c00'); // Laranja
-            
+            navigator.clipboard.writeText("georaquel.2026@gmail.com | Senha: 13022026Rg");
+            alert("Copiado com sucesso, meu amor!");
+            document.documentElement.style.setProperty('--heart-color', '#ff8c00'); // Muda para Laranja
             setTimeout(() => {
-                root.style.setProperty('--heart-color', '#ffd700'); // Amarelo
+                document.documentElement.style.setProperty('--heart-color', '#ffd700'); // Muda para Amarelo
             }, 2000);
         }
     </script>
+</body>
+</html>
 </body>
 </html>
