@@ -1,0 +1,4 @@
+// Exemplo de função para o clique no versículo chave
+document.getElementById("eclesiastes").onclick = function() {
+    window.location.href = "LINK_DO_SEU_VIDEO_AQUI"; 
+};
