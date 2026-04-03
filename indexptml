@@ -1,0 +1,13 @@
+.heart {
+  position: fixed;
+  bottom: -10%;
+  color: #ff69b4;
+  font-size: 20px;
+  animation: fly 10s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes fly {
+  0% { transform: translateY(0) translateX(0); opacity: 1; }
+  100% { transform: translateY(-120vh) translateX(50px); opacity: 0; }
+}
